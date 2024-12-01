@@ -1,0 +1,27 @@
+{% extends 'platillo/base_generic.html' %}
+
+{% block content %}
+    <h4>Lista de platillos registrados</h4>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Procedencia</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for platillo in data %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td><p>{{platillo.nombre}}</p></td>
+                        <td><p>{{platillo.precio}}</p></td>
+                        <td><p>{{platillo.procedencia}}</p></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

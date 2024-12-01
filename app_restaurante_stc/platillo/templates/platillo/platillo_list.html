@@ -1,0 +1,9 @@
+{% extends 'platillo/base_generic.html' %}
+
+{% block content %}
+    {% for platillo in data %}
+        <p> <strong>Nombre: </strong>{{ platillo.nombre }}</p>
+        <p> <strong>Precio: </strong>{{ platillo.precio }}</p>
+        <p> <strong>Procedencia: </strong>{{ platillo.procedencia }}</p>
+    {% endfor %}
+{% endblock %}

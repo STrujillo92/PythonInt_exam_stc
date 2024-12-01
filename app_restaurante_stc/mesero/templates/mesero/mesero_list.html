@@ -1,0 +1,10 @@
+{% extends 'mesero/base_generic.html' %}
+
+{% block content %}
+    {% for mesero in data %}
+        <p> <strong>Nombre: </strong>{{ mesero.nombre }}</p>
+        <p> <strong>Edad: </strong>{{ mesero.edad }}</p>
+        <p> <strong>DNI: </strong>{{ mesero.dni }}</p>
+        <p> <strong>Nacionalidad: </strong>{{ mesero.nacionalidad }}</p>
+    {% endfor %}
+{% endblock %}

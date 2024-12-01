@@ -1,0 +1,29 @@
+{% extends 'mesero/base_generic.html' %}
+
+{% block content %}
+    <h4>Lista de meseros registrados</h4>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Nacionalidad</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for mesero in data %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td><p>{{mesero.nombre}}</p></td>
+                        <td><p>{{mesero.edad}}</p></td>
+                        <td><p>{{mesero.dni}}</p></td>
+                        <td><p>{{mesero.nacionalidad}}</p></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
