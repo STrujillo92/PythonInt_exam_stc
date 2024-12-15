@@ -12,5 +12,6 @@ urlpatterns = [
     path('mesero_delete_vbc/<int:pk>',views.MeseroDelete.as_view(),name='mesero_delete_vbc'),
     path('mesero_list_serializer/', views.ListMeseroSerializer, name='mesero_list_ssr'),
     path('mesero_list_drf_def/',views.mesero_api_view,name='mesero_list_drf'),
+    path('mesero_detail_drf_def/<int:pk>', views.mesero_details_view, name='mesero_detail_drf'),
 
 ]

@@ -14,10 +14,8 @@ from rest_framework.response import Response
 
 from mesero.serializers import MeseroSerializer
 
-
 from rest_framework import status
-
-
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 def mesero_list(request):
@@ -77,3 +75,23 @@ def mesero_api_view(request):
             serializers_class.save()
             return Response(serializers_class.data)
         return Response(serializers_class.errors)
+
+@api_view(['GET','PUT','DELETE'])
+@permission_classes([IsAuthenticated])
+def mesero_details_view(request,pk):
+    mesero = Mesero.objects.get(id=pk)
+    if mesero:
+        if request.method == 'GET':
+            serializer_class = MeseroSerializer(mesero)
+            return Response(serializer_class.data,status=status.HTTP_200_OK)
+        elif request.method == 'PUT':
+            serializer_class = MeseroSerializer(mesero,data=request.data)
+            if serializer_class.is_valid():
+                serializer_class.save()
+                return Response(serializer_class.data,status=status.HTTP_202_ACCEPTED)
+            return Response(serializer_class.errors,status=status.HTTP_400_BAD_REQUEST)
+        elif request.method == 'DELETE':
+            mesero.delete()
+            return Response('Mesero ha sido eliminado correctamente de la BD.',status=status.HTTP_202_ACCEPTED)
+
+
