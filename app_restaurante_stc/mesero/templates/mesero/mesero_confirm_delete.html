@@ -1,0 +1,14 @@
+{% extends "mesero/base_generic.html" %}
+
+{% block content %}
+  <h3>Confirmando eliminación de Mesero</h3>
+  <div class="card-body">
+    <form method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <h3>¿Desea eliminar el registro {{object.nombre}}?</h3>
+      <a class="btn btn-danger" href="{% url 'mesero_details' %}" role="button">Cancelar</a>
+      <button type="submit" class="btn btn-primary">Eliminar Mesero</button>
+    </form>
+  </div>
+{% endblock %}

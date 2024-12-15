@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'mesero.apps.MeseroConfig',
     'platillo.apps.PlatilloConfig',
     'comensal.apps.ComensalConfig',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [

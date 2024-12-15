@@ -3,12 +3,14 @@ from platillo.models import Platillo
 from platillo.forms import PlatilloForm
 from django.db.models import Q
 
+from django.core import serializers as ssr
+from django.http import HttpResponse
 
 # Create your views here.
 def platillo_list(request):
-    #data_context = Platillo.objects.all()
-    query =Q(procedencia='Peru') & Q(precio__gt=40)
-    data_context = Platillo.objects.filter(query)
+    data_context = Platillo.objects.all()
+    #query =Q(procedencia='Peru') & Q(precio__gt=40)
+    #data_context = Platillo.objects.filter(query)
     return render(request, 'platillo/platillo_list.html', context={'data': data_context})
 
 def platillo_details(request):
@@ -35,3 +37,11 @@ def platillo_delete15(request):
     platillo.delete()
 
     return redirect('platillo_details')
+
+def ListPlatilloSerializer50(request):
+    query = Q(precio__gte=50)
+    list_platillo = ssr.serialize('json', Platillo.objects.filter(query),fields=['nombre','precio','procedencia'])
+    return HttpResponse(list_platillo, content_type='application/json')
+
+
+

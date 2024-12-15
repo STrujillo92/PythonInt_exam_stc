@@ -6,5 +6,5 @@ urlpatterns = [
     path('platillo_details/', views.platillo_details, name='platillo_details'),
     path('platillo_create/', views.platillo_create, name='platillo_create'),
     path('platillo_delete15/', views.platillo_delete15, name='platillo_delete15'),
-
+    path('platillo50_list_serializer/', views.ListPlatilloSerializer50, name='platillo50_list_ssr'),
 ]
